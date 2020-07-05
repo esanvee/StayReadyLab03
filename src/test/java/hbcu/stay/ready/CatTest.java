@@ -1,8 +1,12 @@
 package hbcu.stay.ready;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import hbcu.stay.ready.animals.Animal;
 import hbcu.stay.ready.animals.Cat;
+import hbcu.stay.ready.animals.Mammal;
 
 import java.util.Date;
 
@@ -16,6 +20,15 @@ public class CatTest {
     // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
     // TODO - Create test to check Mammal inheritance; google search `java instanceof keyword`
 
+
+    Cat cat;
+    @Before
+
+    public void initialize(){
+
+        cat = new Cat ("Tom", new Date(), 101010);
+
+    }
 
     @Test
     public void constructorTest() {
@@ -38,4 +51,87 @@ public class CatTest {
         Assert.assertEquals(givenId, retrievedId);
     }
 
+
+    @Test
+
+    public void setNameTest(){
+
+        String expectedName = "Bobbina";
+
+        cat.setName(expectedName);
+        String actualName = cat.getName();
+
+        Assert.assertEquals(expectedName, actualName);
+
+    }
+
+    @Test
+    public void testSpeak(){
+
+        String expected = "meow!";
+
+        String actual = cat.speak();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test 
+
+    public void setBirthDateTest(){
+
+        Date expectedDate = new Date();
+
+        Date actualDate = cat.getBirthDate();
+
+        Assert.assertEquals(expectedDate, actualDate);
+
+    }
+
+    @Test
+
+    public void testEatFood(){
+
+        Food pizza = new Food();
+
+        cat.eat(pizza);
+        int actualValue = cat.getNumberOfMealsEaten();
+
+        Assert.assertEquals(1, actualValue);
+
+    }
+
+    @Test
+
+    public void getIdTest(){
+
+        int expectedId = 101010;
+        int actualId = cat.getId();
+
+        Assert.assertEquals(101010, actualId);
+    }
+
+    @Test 
+
+    public void instanceTest(){
+
+        boolean expected = true;
+
+        boolean actual = cat instanceof Mammal;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    
+    public void instanceTest2(){
+
+        boolean expected = true;
+
+        boolean actual = cat instanceof Animal;
+
+        Assert.assertEquals(expected, actual);
+    }
 }
